@@ -20,25 +20,27 @@ while (isInteger(input2) == False):
 
 # Sets steps number
 step = input("Please enter step integer (leave blank for 1): ")
-if(step == ""):
-    step = 1
-else:
-    # Ensures step is positive
-    # May add feature to allow counting backwards
-    while (isInteger(step) == False or step < 1):
-        step = input("Input is not an integer. Please try again: ")
+# Ensures step is positive
+# May add feature to allow counting backwards
+while (isInteger(step) == False or (int(step) < 1)):
+    if(step == ""):
+        step = 1
+        break
+    step = input("Input is invalid. Please try again: ")
 
 # Prints values
 
-# Ensures values are printed from smallest to largest
-start = input1
-end = input2
+# Converts string input to integers
+start = int(input1)
+end = int(input2)
 
-if(input1 > input2):
-    start = input2
-    end = input1
+# Swaps values if start is larger than end
+if(start > end):
+    start = int(input2)
+    end = int(input1)
 
 print("Values:")
-for i in range(int(start), int(end) + 1, int(step)):
+for i in range(start, end + 1, int(step)):
     print(i)
 
+input("Complete. Press enter to exit")
